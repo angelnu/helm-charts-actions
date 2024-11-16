@@ -28,12 +28,17 @@ async function requestAddedModifiedFiles(
   core.info(`Head commit: foo2`);
 
   // Use GitHub's compare two commits API.
-  const response = await octokit.rest.repos.compareCommits({
-    base: baseCommit,
-    head: headCommit,
-    owner: github.context.repo.owner,
-    repo: github.context.repo.repo,
-  });
+  let response
+  try {
+    response = await octokit.rest.repos.compareCommits({
+      base: baseCommit,
+      head: headCommit,
+      owner: github.context.repo.owner,
+      repo: github.context.repo.repo,
+    });
+  } catch (e: any) {
+    console.log(e.retryAfter);
+  }
 
   // Ensure that the request was successful.
   if (response.status !== 200) {
