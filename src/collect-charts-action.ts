@@ -20,7 +20,7 @@ async function requestAddedModifiedFiles(
   requireHeadAheadOfBase: boolean
 ) {
   const result: string[] = [];
-  const octokit = github.getOctokit(githubToken);
+  const octokit = github.getOctokit(githubToken, {baseUrl: "https://git.kvant.cloud/api/v1"});
 
   core.info(`Base commit: ${baseCommit}`);
   core.info(`Head commit: ${headCommit}`);
