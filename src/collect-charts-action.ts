@@ -20,12 +20,12 @@ async function requestAddedModifiedFiles(
   requireHeadAheadOfBase: boolean
 ) {
   const result: string[] = [];
-  const octokit = github.getOctokit(githubToken, {baseUrl: "https://git.kvant.cloud/api/v1"});
+  const octokit = github.getOctokit(githubToken, {baseUrl: "https://git.kvant.cloud/api/v1", log: console});
 
   core.info(`Base commit: ${baseCommit}`);
   core.info(`Head commit: ${headCommit}`);
 
-  core.info(`Head commit: foo1`);
+  core.info(`Head commit: foo2`);
 
   // Use GitHub's compare two commits API.
   const response = await octokit.rest.repos.compareCommits({
