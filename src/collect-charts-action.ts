@@ -25,7 +25,7 @@ async function requestAddedModifiedFiles(
   core.info(`Base commit: ${baseCommit}`);
   core.info(`Head commit: ${headCommit}`);
 
-  core.info(`context: ${github.context}`);
+  core.info(`context: ${JSON.stringify(github.context)}`);
   core.info(`owner: ${github.context.repo.owner}`);
 
   core.info(`Head commit: foo4`);
