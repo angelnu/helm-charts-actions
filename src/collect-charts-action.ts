@@ -25,6 +25,8 @@ async function requestAddedModifiedFiles(
   core.info(`Base commit: ${baseCommit}`);
   core.info(`Head commit: ${headCommit}`);
 
+  core.info(`Head commit: foo1`);
+
   // Use GitHub's compare two commits API.
   const response = await octokit.rest.repos.compareCommits({
     base: baseCommit,
