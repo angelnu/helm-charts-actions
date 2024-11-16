@@ -27,8 +27,13 @@ async function requestAddedModifiedFiles(
 
   core.info(`context: ${JSON.stringify(github.context)}`);
   core.info(`owner: ${github.context.repo.owner}`);
+  core.info(`apiUrl: ${github.context.apiUrl}`);
 
-  core.info(`Head commit: foo4`);
+  core.info(`foo4`);
+
+  return [
+    "charts/apps/reverse-proxy/dummy"
+  ];
 
   // Use GitHub's compare two commits API.
   const response = await octokit.rest.repos.compareCommits({
