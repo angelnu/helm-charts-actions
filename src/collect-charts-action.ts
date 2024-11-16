@@ -20,7 +20,7 @@ async function requestAddedModifiedFiles(
   requireHeadAheadOfBase: boolean
 ) {
   const result: string[] = [];
-  const octokit = github.getOctokit(githubToken, {baseUrl: "https://git.kvant.cloud/api/v1"});
+  const octokit = github.getOctokit(githubToken);
 
   core.info(`Base commit: ${baseCommit}`);
   core.info(`Head commit: ${headCommit}`);
@@ -29,15 +29,15 @@ async function requestAddedModifiedFiles(
   core.info(`owner: ${github.context.repo.owner}`);
   core.info(`apiUrl: ${github.context.apiUrl}`);
 
-  core.info(`foo4`);
+  core.info(`foo5`);
 
-  return [
-    "charts/apps/reverse-proxy/dummy"
-  ];
+  // return [
+  //   "charts/apps/reverse-proxy/dummy"
+  // ];
 
   // Use GitHub's compare two commits API.
-  const response = await octokit.rest.repos.compareCommits({
-    base: baseCommit,
+  const response = await octokit.rest.repos.compareCommitsWithBasehead({
+    basehead: `${baseCommit}...${headCommit}`,
     head: headCommit,
     owner: "phoenix", //github.context.repo.owner,
     repo: github.context.repo.repo,
